@@ -1,22 +1,17 @@
 from gpiozero import Button
 from gpiozero import LED
 from time import sleep
+
 print("Hello world!")
 
-led = LED(2)
+led = LED(3)
 
-button = Button(4)
-flag = 0
-
+button = Button(2)
 while True:
-    if (button.is_pressed) and (flag == 0):
+    if button.is_pressed:
         print("Button is pressed")
+        sleep(0.2)  # debouncing
         led.toggle()
-        flag = 1
+
     else:
         print("Button is not pressed")
-        flag = 0
-
-
-
-print("finish")
